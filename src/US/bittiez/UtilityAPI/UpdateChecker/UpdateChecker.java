@@ -1,4 +1,4 @@
-package US.bittiez.UtilityAPI;
+package US.bittiez.UtilityAPI.UpdateChecker;
 
 import org.apache.commons.io.IOUtils;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -24,19 +24,19 @@ public class UpdateChecker {
      *
      * @return Will return false if version is different, or if an error occurs.
      */
-    public boolean IsUpToDate(){
+    public UpdateStatus IsUpToDate(){
         String remoteVersion;
         try {
             FileConfiguration updated = new YamlConfiguration();
             updated.loadFromString(IOUtils.toString(URI.create(remotePluginYml)));
             String updatedVersion = updated.getString("version");
-            if(!thisPluginVersion.equals(updatedVersion)){
-                return false;
-            }
+            if(!thisPluginVersion.equals(updatedVersion))
+                return new UpdateStatus(updatedVersion, thisPluginVersion, true, false);
+            else
+                return new UpdateStatus("[ERROR]", thisPluginVersion, false, false);
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return new UpdateStatus("[ERROR]", thisPluginVersion, true, true);
         }
-        return false;
     }
 }
