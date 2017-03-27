@@ -24,8 +24,7 @@ public class UpdateChecker {
      *
      * @return Will return false if version is different, or if an error occurs.
      */
-    public UpdateStatus IsUpToDate(){
-        String remoteVersion;
+    public UpdateStatus getStatus(){
         try {
             FileConfiguration updated = new YamlConfiguration();
             updated.loadFromString(IOUtils.toString(URI.create(remotePluginYml)));
