@@ -1,4 +1,4 @@
-package US.bittiez.UtilityAPI.UpdateChecker;
+package Utilities.UpdateChecker;
 
 public class UpdateStatus {
     public String RemoteVersion;

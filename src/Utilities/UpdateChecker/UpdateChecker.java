@@ -1,4 +1,4 @@
-package US.bittiez.UtilityAPI.UpdateChecker;
+package Utilities.UpdateChecker;
 
 import org.apache.commons.io.IOUtils;
 import org.bukkit.configuration.file.FileConfiguration;
